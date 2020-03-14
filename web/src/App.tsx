@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
+import { Home } from 'pages/Home';
+import { News } from 'pages/News';
+import { Dashboard } from 'pages/Dashboard';
+import { Task } from 'pages/Task';
+import { Tips } from 'pages/Tips';
+import { NotFound } from 'pages/NotFound';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export class App extends React.PureComponent {
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route exact={true} path="/" component={Home} />
+          <Route exact={true} path="/news" component={News} />
+          <Route exact={true} path="/dashboard" component={Dashboard} />
+          <Route exact={true} path="/task/:taskId" component={Task} />
+          <Route exact={true} path="/task/:taskId/tips" component={Tips} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    );
+  }
 }
-
-export default App;
