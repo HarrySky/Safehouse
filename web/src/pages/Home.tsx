@@ -3,11 +3,18 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   title: {
-    textAlign: "center"
+    textAlign: "center",
+    fontFamily: "Lato",
+    fontWeight: 700,
+    fontSize: '32px',
+    color: '#262642',
+    marginTop: '100px',
+    marginBottom: '30px',
   } as CSSProperties,
   house: {
     marginLeft: "50%",
-    transform: "translateX(-50%)"
+    transform: "translateX(-50%)",
+    width: '370px'
   } as CSSProperties,
   page: {
     overflow: "hidden",
