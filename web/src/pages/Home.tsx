@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { House } from 'ui/House';
+import House from 'ui/House';
 
 const styles = {
   title: {
