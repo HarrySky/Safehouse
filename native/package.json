@@ -54,6 +54,9 @@
       "jsx",
       "json",
       "node"
+    ],
+    "testPathIgnorePatterns" : [
+      "<rootDir>/build/" 
     ]
   }
 }
