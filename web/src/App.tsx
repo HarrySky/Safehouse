@@ -1,3 +1,4 @@
+import CssBaseline from '@material-ui/core/CssBaseline';
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -15,6 +16,7 @@ export class App extends React.PureComponent {
   render() {
     return (
       <Router>
+        <CssBaseline />
         <Switch>
           <Route exact={true} path="/" component={Home} />
           <Route exact={true} path="/news" component={News} />

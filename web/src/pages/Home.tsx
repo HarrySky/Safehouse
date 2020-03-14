@@ -6,9 +6,8 @@ const styles = {
     textAlign: "center"
   } as CSSProperties,
   house: {
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto"
+    marginLeft: "50%",
+    transform: "translateX(-50%)"
   } as CSSProperties,
 };
 
