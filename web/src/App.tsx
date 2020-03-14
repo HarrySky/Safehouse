@@ -1,3 +1,4 @@
+import CssBaseline from '@material-ui/core/CssBaseline';
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -11,19 +12,40 @@ import { Task } from 'pages/Task';
 import { Tips } from 'pages/Tips';
 import { NotFound } from 'pages/NotFound';
 
+import { AppTabs } from 'ui/AppTabs';
+import { MuiThemeProvider, Theme, createMuiTheme } from '@material-ui/core/styles';
+import { Palette, PaletteColorOptions } from '@material-ui/core/styles/createPalette';
+
+const APP_THEME: Readonly<Theme> = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#262642"
+    } as Readonly<PaletteColorOptions>,
+    secondary: {
+      main: "#CDC7D7",
+    } as Readonly<PaletteColorOptions>,
+    type: 'light',
+  } as Readonly<Palette>,
+});
+
+
 export class App extends React.PureComponent {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route exact={true} path="/" component={Home} />
-          <Route exact={true} path="/news" component={News} />
-          <Route exact={true} path="/dashboard" component={Dashboard} />
-          <Route exact={true} path="/task/:taskId" component={Task} />
-          <Route exact={true} path="/task/:taskId/tips" component={Tips} />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
+      <MuiThemeProvider theme={APP_THEME}>
+        <Router>
+          <CssBaseline />
+          <Switch>
+            <Route exact={true} path="/" component={Home} />
+            <Route exact={true} path="/news" component={News} />
+            <Route exact={true} path="/dashboard" component={Dashboard} />
+            <Route exact={true} path="/task/:taskId" component={Task} />
+            <Route exact={true} path="/task/:taskId/tips" component={Tips} />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+        <AppTabs />
+      </MuiThemeProvider>
     );
   }
 }
