@@ -21,22 +21,7 @@ const APP_THEME: Readonly<Theme> = createMuiTheme({
 });
 
 
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-
-import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
-import HomeIcon from '@material-ui/icons/Home';
-import HistoryIcon from '@material-ui/icons/History';
-
-const styles = {
-  tabs: {
-    width: "100%",
-    position: "fixed",
-    bottom: "0px",
-    left: "0px"
-  } as CSSProperties
-};
+import { AppTabs } from 'ui/AppTabs';
 
 export class App extends React.PureComponent {
   render() {
