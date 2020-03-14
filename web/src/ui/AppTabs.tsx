@@ -15,7 +15,10 @@ const styles = {
     bottom: "0px",
     left: "0px",
     boxShadow: '0 -5px 5px -5px #CDC7D7',
-  } as CSSProperties
+  } as CSSProperties,
+  menu: {
+    fontFamily: 'Lato',
+  } as CSSProperties,
 };
 
 export class AppTabs extends React.PureComponent {
@@ -29,9 +32,9 @@ export class AppTabs extends React.PureComponent {
           textColor="primary"
           aria-label="icon tabs example"
         >
-          <Tab label="News" icon={<ChromeReaderModeIcon />} aria-label="News" />
-          <Tab label="Home" icon={<HomeIcon />} aria-label="Home" />
-          <Tab label="Dashboard" icon={<HistoryIcon />} aria-label="Dashboard" />
+          <Tab label="News" icon={<ChromeReaderModeIcon />} aria-label="News" style={styles.menu}/>
+          <Tab label="Home" icon={<HomeIcon />} aria-label="Home" style={styles.menu}/>
+          <Tab label="Dashboard" icon={<HistoryIcon />} aria-label="Dashboard" style={styles.menu}/>
         </Tabs>
       </Paper>
     );
