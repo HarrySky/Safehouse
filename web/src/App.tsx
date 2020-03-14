@@ -21,6 +21,23 @@ const APP_THEME: Readonly<Theme> = createMuiTheme({
 });
 
 
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
+import AnnouncementIcon from '@material-ui/icons/Announcement';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+
+const styles = {
+  tabs: {
+    width: "100%",
+    position: "fixed",
+    bottom: "0px",
+    left: "0px"
+  } as CSSProperties
+};
+
 export class App extends React.PureComponent {
   render() {
     return (
