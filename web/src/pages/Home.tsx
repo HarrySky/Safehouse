@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react';
 import Typography from '@material-ui/core/Typography';
+import { House } from 'ui/House';
 
 const styles = {
   title: {
@@ -10,11 +11,6 @@ const styles = {
     color: '#262642',
     marginTop: '100px',
     marginBottom: '30px',
-  } as CSSProperties,
-  house: {
-    marginLeft: "50%",
-    transform: "translateX(-50%)",
-    width: '370px'
   } as CSSProperties,
   page: {
     overflow: "hidden",
@@ -29,7 +25,8 @@ export class Home extends React.PureComponent {
         <Typography variant="h2" style={styles.title}>
           My SafeHouse
         </Typography>
-        <img src="/house.gif" alt="House" style={styles.house} />
+
+        <House />
       </div>
     );
   }
