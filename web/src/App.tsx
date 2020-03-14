@@ -16,9 +16,9 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-import AnnouncementIcon from '@material-ui/icons/Announcement';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
+import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
+import HomeIcon from '@material-ui/icons/Home';
+import HistoryIcon from '@material-ui/icons/History';
 
 const styles = {
   tabs: {
@@ -50,9 +50,9 @@ export class App extends React.PureComponent {
             textColor="primary"
             aria-label="icon tabs example"
           >
-            <Tab label="News" icon={<AnnouncementIcon />} aria-label="News" />
-            <Tab label="Home" icon={<FavoriteIcon />} aria-label="Home" />
-            <Tab label="Dashboard" icon={<PersonPinIcon />} aria-label="Dashboard" />
+            <Tab label="News" icon={<ChromeReaderModeIcon />} aria-label="News" />
+            <Tab label="Home" icon={<HomeIcon />} aria-label="Home" />
+            <Tab label="Dashboard" icon={<HistoryIcon />} aria-label="Dashboard" />
           </Tabs>
         </Paper>
       </Router>
