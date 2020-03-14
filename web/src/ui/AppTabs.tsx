@@ -13,7 +13,8 @@ const styles = {
     width: "100%",
     position: "fixed",
     bottom: "0px",
-    left: "0px"
+    left: "0px",
+    boxShadow: '0 -5px 5px -5px #CDC7D7',
   } as CSSProperties
 };
 
