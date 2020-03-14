@@ -1,5 +1,5 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -12,22 +12,7 @@ import { Task } from 'pages/Task';
 import { Tips } from 'pages/Tips';
 import { NotFound } from 'pages/NotFound';
 
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-
-import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
-import HomeIcon from '@material-ui/icons/Home';
-import HistoryIcon from '@material-ui/icons/History';
-
-const styles = {
-  tabs: {
-    width: "100%",
-    position: "fixed",
-    bottom: "0px",
-    left: "0px"
-  } as CSSProperties
-};
+import { AppTabs } from 'ui/AppTabs';
 
 export class App extends React.PureComponent {
   render() {
@@ -42,19 +27,7 @@ export class App extends React.PureComponent {
           <Route exact={true} path="/task/:taskId/tips" component={Tips} />
           <Route component={NotFound} />
         </Switch>
-        <Paper square={true} style={styles.tabs}>
-          <Tabs
-            value={1}
-            variant="fullWidth"
-            indicatorColor="primary"
-            textColor="primary"
-            aria-label="icon tabs example"
-          >
-            <Tab label="News" icon={<ChromeReaderModeIcon />} aria-label="News" />
-            <Tab label="Home" icon={<HomeIcon />} aria-label="Home" />
-            <Tab label="Dashboard" icon={<HistoryIcon />} aria-label="Dashboard" />
-          </Tabs>
-        </Paper>
+        <AppTabs />
       </Router>
     );
   }
