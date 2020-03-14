@@ -26,7 +26,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-declare var global: {HermesInternal: null | {}};
+declare var global: { HermesInternal: null | {} };
 
 export class App extends React.PureComponent {
   render() {
@@ -36,7 +36,8 @@ export class App extends React.PureComponent {
         <SafeAreaView>
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
+            style={styles.scrollView}
+          >
             <Header />
             {global.HermesInternal == null ? null : (
               <View style={styles.engine}>
