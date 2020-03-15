@@ -53,7 +53,7 @@ const styles = {
   } as CSSProperties,
   list:{
     fontFamily: "Lato",
-    fontSize: '32px',
+    fontSize: '20px',
     marginLeft: "15%",
     marginRight: '20px',
   } as CSSProperties,
@@ -65,8 +65,7 @@ const styles = {
   } as CSSProperties,
   button: {
     marginLeft: "50%",
-    width: '7%',
-    height: '7%',
+    transform: "translateX(-50%)",
     boxShadow: '1px 1px 3px 2px #CDC7D7',
   } as CSSProperties,
   textButton:{
