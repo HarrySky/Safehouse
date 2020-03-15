@@ -30,7 +30,7 @@ const styles = {
   } as CSSProperties,
   newsPaper: {
     width: "90%",
-    padding: "20px",
+    padding: "10px",
     marginLeft: "50%",
     transform: "translateX(-50%)",
     textAlign: "center",
