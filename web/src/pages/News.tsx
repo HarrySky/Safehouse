@@ -2,7 +2,6 @@ import React, { CSSProperties } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import Parser, { Item } from 'rss-parser';
 import Button from '@material-ui/core/Button';
 
 const styles = {
@@ -52,11 +51,10 @@ const styles = {
 };
 
 const RSSFeedURL = "https://www.valitsus.ee/et/news/1+3/feed?keyword=koroonaviirus"
-const RSSParser = new Parser();
 
 export class News extends React.PureComponent {
   state = {
-    items: undefined as Item[] | undefined
+    items: undefined as any[] | undefined
   }
   render() {
     const news = this.state.items;
@@ -93,7 +91,7 @@ export class News extends React.PureComponent {
           </Typography>
 
           <Typography variant="subtitle2" style={styles.content}>
-            {news ? news[0].contentSnippet : "Loading Snippet..."}
+            {news ? news[0].content.slice(181) : "Loading Snippet..."}
           </Typography>
 
           <Button
@@ -111,7 +109,9 @@ export class News extends React.PureComponent {
   }
 
   componentDidMount() {
-    RSSParser.parseURL(RSSFeedURL).then(feed => {
+    fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSSFeedURL)).then(response => {
+      return response.json();
+    }).then(feed => {
       if (!feed.items) {
         this.setState({items: [{
             title: "No",
