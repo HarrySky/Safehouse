@@ -8,6 +8,10 @@ import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
 import HomeIcon from '@material-ui/icons/Home';
 import HistoryIcon from '@material-ui/icons/History';
 
+import { connect } from 'react-redux';
+
+import { Props, mapStateToProps, mapDispatchToProps } from 'store/ui/AppTabs';
+
 const styles = {
   tabs: {
     width: "100%",
@@ -21,22 +25,46 @@ const styles = {
   } as CSSProperties,
 };
 
-export class AppTabs extends React.PureComponent {
+class AppTabs extends React.PureComponent<Props> {
   render() {
     return (
       <Paper square={true} style={styles.tabs}>
         <Tabs
-          value={1}
+          value={this.props.tab}
+          onChange={this.props.switchTab}
           variant="fullWidth"
           indicatorColor="primary"
           textColor="primary"
           aria-label="icon tabs example"
         >
-          <Tab label="News" icon={<ChromeReaderModeIcon />} aria-label="News" style={styles.menu}/>
-          <Tab label="Home" icon={<HomeIcon />} aria-label="Home" style={styles.menu}/>
-          <Tab label="Dashboard" icon={<HistoryIcon />} aria-label="Dashboard" style={styles.menu}/>
+          <Tab
+            label="News"
+            icon={<ChromeReaderModeIcon />}
+            aria-label="News"
+            style={styles.menu}
+          />
+
+          <Tab
+            label="Home"
+            icon={<HomeIcon />}
+            aria-label="Home"
+            style={styles.menu}
+          />
+
+          <Tab
+            label="Dashboard"
+            icon={<HistoryIcon />}
+            aria-label="Dashboard"
+            style={styles.menu}
+          />
         </Tabs>
       </Paper>
     );
   }
 }
+
+// tslint:disable-next-line: no-default-export
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppTabs);

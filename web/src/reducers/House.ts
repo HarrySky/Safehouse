@@ -1,8 +1,9 @@
-import { takeLatest } from 'redux-saga/effects';
+import { takeLatest, call, put } from 'redux-saga/effects';
 import { AppState, INITIAL_STATE } from 'store/State';
 import { update } from 'store/utils';
-import { houseProgressFetchReducer } from 'actions/House';
 import { Actions, HouseProgressAction } from 'actions';
+import { fetchHouseProgress } from 'store/data/House';
+import { houseProgressFetchOk, houseProgressFetchFail } from 'actions/House';
 
 export function houseProgressReducer(
   state = INITIAL_STATE,
@@ -26,6 +27,15 @@ export function houseProgressReducer(
       });
     default:
       return state;
+  }
+}
+
+export function* houseProgressFetchReducer(action: HouseProgressAction) {
+  try {
+    const progress = yield call(() => fetchHouseProgress());
+    yield put(houseProgressFetchOk(progress));
+  } catch (error) {
+    yield put(houseProgressFetchFail(error.message));
   }
 }
 

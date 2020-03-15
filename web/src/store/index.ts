@@ -2,9 +2,11 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from '@redux-saga/core';
 import { houseProgressReducer, houseProgressFetchSaga } from "reducers/House"
 import { INITIAL_STATE, AppState } from 'store/State';
+import { appTabsReducer } from 'reducers/AppTabs';
 
 const REDUCERS = [
-  houseProgressReducer
+  houseProgressReducer,
+  appTabsReducer,
 ];
 
 // tslint:disable-next-line: no-any
