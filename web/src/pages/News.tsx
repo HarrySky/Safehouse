@@ -2,6 +2,8 @@ import React, { CSSProperties } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Parser, { Item } from 'rss-parser';
+import Button from '@material-ui/core/Button';
 
 const styles = {
   page: {
@@ -16,7 +18,7 @@ const styles = {
     fontWeight: 700,
     fontSize: '32px',
     color: '#262642',
-    marginTop: '40px',
+    marginTop: '20px',
     marginBottom: '20px',
   } as CSSProperties,
   statsPaper: {
@@ -28,17 +30,37 @@ const styles = {
     textAlign: "center"
   } as CSSProperties,
   newsPaper: {
-    width: "80%",
+    width: "90%",
     padding: "20px",
     marginLeft: "50%",
     transform: "translateX(-50%)",
     textAlign: "center",
     flexGrow : 1
+  } as CSSProperties,
+  readMore: {
+    bottom: "5px",
+    right: "5px",
+    position: "absolute"
+  } as CSSProperties,
+  content: {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    WebkitLineClamp: 4
   } as CSSProperties
 };
 
+const RSSFeedURL = "https://www.valitsus.ee/et/news/1+3/feed?keyword=koroonaviirus"
+const RSSParser = new Parser();
+
 export class News extends React.PureComponent {
+  state = {
+    items: undefined as Item[] | undefined
+  }
   render() {
+    const news = this.state.items;
+
     return (
       <div style={styles.page}>
         <Typography variant="h2" style={styles.title}>
@@ -47,13 +69,13 @@ export class News extends React.PureComponent {
 
         <Paper style={styles.statsPaper}>
           <Typography variant="h3" color="primary" gutterBottom={true}>
-            71,696
+            72624
           </Typography>
 
           <LinearProgress
             variant="determinate"
             color="primary"
-            value={64}
+            value={72624/156102*100}
           />
         </Paper>
 
@@ -62,9 +84,46 @@ export class News extends React.PureComponent {
         </Typography>
 
         <Paper style={styles.newsPaper}>
-          News
+          <Typography variant="h6">
+            {news ? news[0].title : "Loading Title..."}
+          </Typography>
+
+          <Typography variant="caption" color="secondary">
+            {news ? news[0].pubDate : "Loading Date..."}
+          </Typography>
+
+          <Typography variant="subtitle2" style={styles.content}>
+            {news ? news[0].contentSnippet : "Loading Snippet..."}
+          </Typography>
+
+          <Button
+            style={styles.readMore}
+            color="primary"
+            variant="text"
+            size="small"
+            href={news ? news[0].link : "#"}
+          >
+            Read More > >
+          </Button>
         </Paper>
       </div>
     );
+  }
+
+  componentDidMount() {
+    RSSParser.parseURL(RSSFeedURL).then(feed => {
+      if (!feed.items) {
+        this.setState({items: [{
+            title: "No",
+            pubDate: "News",
+            contentSnippet: "Available",
+            link: "#"
+          }]
+        });
+        return;
+      }
+
+      this.setState({items: feed.items});
+    });
   }
 }
