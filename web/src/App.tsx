@@ -20,24 +20,6 @@ const APP_THEME: Readonly<Theme> = createMuiTheme({
   } as Readonly<Palette>,
 });
 
-
-import { AppTabs } from 'ui/AppTabs';
-import { MuiThemeProvider, Theme, createMuiTheme } from '@material-ui/core/styles';
-import { Palette, PaletteColorOptions } from '@material-ui/core/styles/createPalette';
-
-const APP_THEME: Readonly<Theme> = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#262642"
-    } as Readonly<PaletteColorOptions>,
-    secondary: {
-      main: "#CDC7D7",
-    } as Readonly<PaletteColorOptions>,
-    type: 'light',
-  } as Readonly<Palette>,
-});
-
-
 export class App extends React.PureComponent {
   render() {
     return (
