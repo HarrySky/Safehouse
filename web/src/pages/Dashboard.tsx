@@ -29,11 +29,11 @@ const styles = {
   hands: {
     marginLeft: "50%",
     transform: "translateX(-50%)",
-    width: '100px',
+    width: '50px',
     border: 'solid',
     borderWidth: '1.5px',
     borderColor:'#262642',
-    borderRadius: '12px',
+    borderRadius: '6px',
     boxShadow: ' 1px 2px 2px 3px #CDC7D7',
     marginBottom: '10px'
   } as CSSProperties,
@@ -43,7 +43,7 @@ const styles = {
   } as CSSProperties,
   list:{
     fontFamily: "Lato",
-    fontSize: '32px',
+    fontSize: '20px',
     marginLeft: "15%",
     marginRight: '20px',
   } as CSSProperties
