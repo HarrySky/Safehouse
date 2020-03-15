@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { Paper } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const styles = {
   page: {
@@ -45,10 +46,18 @@ export class News extends React.PureComponent {
         </Typography>
 
         <Paper style={styles.statsPaper}>
-          Stats
+          <Typography variant="h3" color="primary" gutterBottom={true}>
+            71,696
+          </Typography>
+
+          <LinearProgress
+            variant="determinate"
+            color="primary"
+            value={64}
+          />
         </Paper>
 
-        <Typography variant="h2" style={styles.title}>
+        <Typography variant="h2" style={styles.title} >
           Latest News
         </Typography>
 
