@@ -4,7 +4,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Avatar from '@material-ui/core/Avatar';
 import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 
 interface Props {
@@ -36,10 +35,6 @@ const styles = {
     boxShadow: ' 2px 2px 2px 3px #CDC7D7',
     marginBottom: '20px'
   } as CSSProperties,
-  page: {
-    overflow: "hidden",
-    padding: "10px"
-  } as CSSProperties,
   list:{
     fontFamily: "Lato",
     fontSize: '18px',
@@ -56,25 +51,33 @@ export class Tips extends React.PureComponent<Props> {
   render() {
     return (
       <div>
-      <Typography variant="h2" style={styles.title}>
-        Personal Hygiene
-      </Typography>
-      <div style={styles.plaintext}>Tips & Tricks</div>
-      <img src="/soap.png" alt="House"  style={styles.hands}/>
-      <List style={styles.list}>
-        <ListItem>
-          <ListItemIcon>
-            <CheckOutlinedIcon style={styles.icon}/>
-          </ListItemIcon>
-          <ListItemText disableTypography='true' primary="Do not touch your face & eyes & nose. Or anyone else’s"/>
-        </ListItem>
-        <ListItem>
-          <ListItemIcon>
-            <CheckOutlinedIcon style={styles.icon}/>
-          </ListItemIcon>
-          <ListItemText disableTypography='true' primary="Use alcohol-based (>60%) hand sanitizer. Do not drink it"/>
-        </ListItem>
-      </List>
+        <Typography variant="h2" style={styles.title}>
+          Personal Hygiene
+        </Typography>
+        <Typography style={styles.plaintext}>Tips & Tricks</Typography>
+
+        <img src="/soap.png" alt="Soap"  style={styles.hands}/>
+
+        <List style={styles.list}>
+          <ListItem>
+            <ListItemIcon>
+              <CheckOutlinedIcon style={styles.icon}/>
+            </ListItemIcon>
+            <ListItemText
+              disableTypography={true}
+              primary="Do not touch your face & eyes & nose. Or anyone else’s"
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <CheckOutlinedIcon style={styles.icon}/>
+            </ListItemIcon>
+            <ListItemText
+              disableTypography={true}
+              primary="Use alcohol-based (>60%) hand sanitizer. Do not drink it"
+            />
+          </ListItem>
+        </List>
       </div>
     );
   }
