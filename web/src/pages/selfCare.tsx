@@ -4,16 +4,16 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import Avatar from '@material-ui/core/Avatar';
+import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Checkbox from '@material-ui/core/Checkbox';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-
 interface Props {
   match: { params: {taskId: number} };
 }
-
 const styles = {
   title: {
     textAlign: "center",
@@ -79,44 +79,55 @@ const styles = {
     position: 'relative'
   } as CSSProperties
 };
-
-export class Task extends React.PureComponent<Props> {
+export class SelfCare extends React.PureComponent<Props> {
   render() {
     return (
       <div>
-        <Typography variant="h2" style={styles.title}>
-          Personal Hygiene
-        </Typography>
-        <div style={styles.plaintext}>Tasks</div>
-        <div style={styles.progress}>
-          <LinearProgress
-            variant="determinate"
-            color="primary"
-            value={30}
-          />
+      <Typography variant="h2" style={styles.title}>
+        Self Care
+      </Typography>
+      <div style={styles.plaintext}>Tasks</div>
+      <div style={styles.progress}>
+        <LinearProgress
+          variant="determinate"
+          color="primary"
+          value={50}
+        />
         </div>
-        <img src="/care.png" alt="Care" style={styles.hands} />
+      <img src="/care.png" style={styles.hands}/>
         <List style={styles.list}>
           <ListItem>
             <ListItemIcon>
               <Checkbox style={styles.checkbox} />
             </ListItemIcon>
-            <ListItemText disableTypography={true} primary='Wash hands' />
+            <ListItemText disableTypography={true} primary='Morning exercise' />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <Checkbox style={styles.checkbox} />
+            </ListItemIcon>
+            <ListItemText disableTypography={true} primary='Cook your favourite meal' />
           </ListItem>
           <ListItem>
             <ListItemIcon>
               <Checkbox style={styles.checkbox}/>
             </ListItemIcon>
-            <ListItemText disableTypography={true} primary='Use sanitizer' />
+            <ListItemText disableTypography={true} primary='Meditation' />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <Checkbox style={styles.checkbox} />
+            </ListItemIcon>
+            <ListItemText disableTypography={true} primary='Movie marathon' />
           </ListItem>
         </List>
         <IconButton style={styles.button}>
           <AddOutlinedIcon fontSize="large" />
         </IconButton>
         <div style={styles.relative}>
-          <Button size="small" style={styles.textButton}>
-            Tips & Tricks >>
-          </Button>
+        <Button size="small" style={styles.textButton}>
+          Tips & Tricks >>
+        </Button>
         </div>
       </div>
     );
