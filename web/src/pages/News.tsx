@@ -17,8 +17,8 @@ const styles = {
     fontWeight: 700,
     fontSize: '32px',
     color: '#262642',
-    marginTop: '20px',
-    marginBottom: '20px',
+    marginTop: '10px',
+    marginBottom: '10px',
   } as CSSProperties,
   statsPaper: {
     width: "250px",

@@ -15,6 +15,7 @@ import { Props, mapStateToProps, mapDispatchToProps } from 'store/ui/AppTabs';
 const styles = {
   tabs: {
     width: "100%",
+    height: "72px",
     position: "fixed",
     bottom: "0px",
     left: "0px",
