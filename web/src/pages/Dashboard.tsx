@@ -62,15 +62,18 @@ export class Dashboard extends React.PureComponent {
           <IconButton>
             <img src="/soap.png" alt="Soap"  style={styles.hands}/>
           </IconButton>
+          <a href="/task/personalHygiene">
           <ListItemText
             disableTypography={true}
-            primary="Personal hygiene">
-              <LinearProgress
-                variant="determinate"
-                color="primary"
-                value={30}
-              />
+            primary="Personal hygiene"
+          >
+            <LinearProgress
+              variant="determinate"
+              color="primary"
+              value={30}
+            />
           </ListItemText>
+          </a>
         </ListItem>
         <ListItem>
           <IconButton>
@@ -103,10 +106,12 @@ export class Dashboard extends React.PureComponent {
           <IconButton>
             <img src="/care.png" alt="Soap"  style={styles.hands}/>
           </IconButton>
+          <a href="/task/selfCare">
           <ListItemText
             disableTypography={true}
             primary="Self Care"
           />
+          </a>
         </ListItem>
       </List>
       </div>

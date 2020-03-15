@@ -5,7 +5,7 @@ import { Actions, AppTabsAction } from 'actions';
 const routes = [
   "/news",
   "/",
-  "/task/1"
+  "/dashboard"
 ]
 
 export function appTabsReducer(

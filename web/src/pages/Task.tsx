@@ -114,7 +114,7 @@ export class Task extends React.PureComponent<Props> {
           <AddOutlinedIcon fontSize="large" />
         </IconButton>
         <div style={styles.relative}>
-          <Button size="small" style={styles.textButton}>
+          <Button size="small" style={styles.textButton} href="/task/personalHygiene/tips">
             Tips & Tricks >>
           </Button>
         </div>
