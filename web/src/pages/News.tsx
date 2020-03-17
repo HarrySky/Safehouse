@@ -54,10 +54,15 @@ const RSSFeedURL = "https://www.valitsus.ee/et/news/1+3/feed?keyword=koroonaviir
 
 export class News extends React.PureComponent {
   state = {
-    items: undefined as any[] | undefined
+    items: undefined as any[] | undefined,
+    confirmed: undefined as number | undefined,
+    recovered: undefined as number | undefined
   }
   render() {
     const news = this.state.items;
+    const confirmed = this.state.confirmed;
+    const recovered = this.state.recovered;
+    const statsAvailable = confirmed != undefined && recovered != undefined;
 
     return (
       <div style={styles.page}>
@@ -67,13 +72,13 @@ export class News extends React.PureComponent {
 
         <Paper style={styles.statsPaper}>
           <Typography variant="h3" color="primary" gutterBottom={true}>
-            72624
+            {statsAvailable ? recovered : "Loading..."}
           </Typography>
 
           <LinearProgress
             variant="determinate"
             color="primary"
-            value={72624/156102*100}
+            value={statsAvailable ? recovered!/confirmed!*100 : 0}
           />
         </Paper>
 
@@ -109,7 +114,9 @@ export class News extends React.PureComponent {
   }
 
   componentDidMount() {
-    fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSSFeedURL)).then(response => {
+    fetch(
+      "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSSFeedURL)
+    ).then(response => {
       return response.json();
     }).then(feed => {
       if (!feed.items) {
@@ -124,6 +131,17 @@ export class News extends React.PureComponent {
       }
 
       this.setState({items: feed.items});
+    });
+
+    fetch(
+      "https://coronavirus-tracker-api.herokuapp.com/all"
+    ).then(response => {
+      return response.json();
+    }).then(data => {
+      const confirmed = data.latest.confirmed;
+      const recovered = data.latest.recovered;
+
+      this.setState({confirmed, recovered});
     });
   }
 }
