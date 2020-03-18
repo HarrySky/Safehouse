@@ -3,12 +3,8 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import Checkbox from '@material-ui/core/Checkbox';
-import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
 
 const styles = {
   title: {

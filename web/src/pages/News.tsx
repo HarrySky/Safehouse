@@ -36,6 +36,13 @@ const styles = {
     textAlign: "center",
     flexGrow : 1
   } as CSSProperties,
+  newsTitle: {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    WebkitLineClamp: 3
+  } as CSSProperties,
   readMore: {
     bottom: "5px",
     right: "5px",
@@ -59,11 +66,19 @@ export class News extends React.PureComponent {
     recovered: undefined as number | undefined,
     statsError: false
   }
+
   render() {
-    const news = this.state.items;
     const confirmed = this.state.confirmed;
     const recovered = this.state.recovered;
-    const statsAvailable = confirmed != undefined && recovered != undefined;
+    const statsError = this.state.statsError;
+
+    const statsAvailable = confirmed !== undefined && recovered !== undefined;
+    const progress = statsAvailable ? recovered!/confirmed!*100 : 0;
+
+    const news = this.state.items ? this.state.items[0] : undefined;
+    const newsTitle = news ? news.title : "Loading News...";
+    const newsPubDate = news ? news.pubDate : "...";
+    const newsContent = news ? news.content : "...";
 
     return (
       <div style={styles.page}>
@@ -73,13 +88,13 @@ export class News extends React.PureComponent {
 
         <Paper style={styles.statsPaper}>
           <Typography variant="h3" color="primary" gutterBottom={true}>
-            {statsAvailable ? recovered : "Loading..."}
+            {statsAvailable && !statsError ? recovered : "..."}
           </Typography>
 
           <LinearProgress
-            variant="determinate"
+            variant={statsAvailable || statsError ? "determinate" : "indeterminate"}
+            value={progress}
             color="primary"
-            value={statsAvailable ? recovered!/confirmed!*100 : 0}
           />
         </Paper>
 
@@ -88,16 +103,16 @@ export class News extends React.PureComponent {
         </Typography>
 
         <Paper style={styles.newsPaper}>
-          <Typography variant="h6">
-            {news ? news[0].title : "Loading Title..."}
+          <Typography variant="h6" style={styles.newsTitle}>
+            {newsTitle}
           </Typography>
 
           <Typography variant="caption" color="secondary">
-            {news ? news[0].pubDate : "Loading Date..."}
+            {newsPubDate}
           </Typography>
 
           <Typography variant="subtitle2" style={styles.content}>
-            {news ? news[0].content.slice(181) : "Loading Snippet..."}
+            {newsContent.length > 181 ? newsContent.slice(181) : newsContent}
           </Typography>
 
           <Button
@@ -105,7 +120,7 @@ export class News extends React.PureComponent {
             color="primary"
             variant="text"
             size="small"
-            href={news ? news[0].link : "#"}
+            href={news ? news.link : "#"}
           >
             Read More > >
           </Button>
@@ -121,10 +136,11 @@ export class News extends React.PureComponent {
       return response.json();
     }).then(feed => {
       if (!feed.items) {
-        this.setState({items: [{
+        this.setState({
+          items: [{
             title: "No",
             pubDate: "News",
-            contentSnippet: "Available",
+            content: "Available",
             link: "#"
           }]
         });

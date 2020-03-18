@@ -3,8 +3,6 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 
 interface Props {
   match: { params: {taskId: number} };
@@ -65,7 +63,7 @@ export class Personal extends React.PureComponent<Props> {
             />
           </ListItem>
           <ListItem>
-            <img src="/disinfector.png" alt="Disinfector"  style={styles.hands}/>
+            <img src="/disinfector.png" alt="Disinfector" style={styles.hands}/>
           </ListItem>
           <ListItem>
             <ListItemText

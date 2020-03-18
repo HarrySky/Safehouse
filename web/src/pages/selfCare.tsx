@@ -4,8 +4,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Avatar from '@material-ui/core/Avatar';
-import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Checkbox from '@material-ui/core/Checkbox';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
@@ -93,7 +91,7 @@ export class SelfCare extends React.PureComponent<Props> {
           value={50}
         />
         </div>
-      <img src="/care.png" style={styles.hands}/>
+      <img src="/care.png" alt="Care" style={styles.hands}/>
         <List style={styles.list}>
           <ListItem>
             <ListItemIcon>
