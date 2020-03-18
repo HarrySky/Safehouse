@@ -56,7 +56,8 @@ export class News extends React.PureComponent {
   state = {
     items: undefined as any[] | undefined,
     confirmed: undefined as number | undefined,
-    recovered: undefined as number | undefined
+    recovered: undefined as number | undefined,
+    statsError: false
   }
   render() {
     const news = this.state.items;
@@ -131,6 +132,17 @@ export class News extends React.PureComponent {
       }
 
       this.setState({items: feed.items});
+    }).catch(error => {
+      this.setState({
+        items: [{
+          title: "Fetching News Failed!",
+          pubDate: error.message,
+          content: "Please Refresh Page To Try Again",
+          link: "#"
+        }]
+      });
+
+      console.log("Unable to fetch COVID-19 news: " + error.message);
     });
 
     fetch(
@@ -142,6 +154,9 @@ export class News extends React.PureComponent {
       const recovered = data.latest.recovered;
 
       this.setState({confirmed, recovered});
+    }).catch(error => {
+      this.setState({statsError: true});
+      console.log("Unable to fetch COVID-19 stats: " + error.message);
     });
   }
 }
